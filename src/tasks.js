@@ -13,5 +13,10 @@ function calculateTotal(price, quantity, customerType) {
     : subtotal;
 }
 
-// the API key comes from an environment variable,
-// e.g. process.env.API_KEY — never hard-coded
+// Read the API base URL from the environment
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000'; // fallback for local dev if needed
+
+// Use it in your fetch requests:
+fetch(`${API}/api/menu`)
+  .then(response => response.json())
+  .then(data => console.log(data));
